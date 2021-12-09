@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<title>電車検索</title>
+</head>
+<body>
+
+	<div class="border border-primary" style="padding: 20px; margin: 30px;">
+
+		<div class="d-flex justify-content-start">
+		<h2>電車検索（片道）</h2>
+			<form action="/roundTripSearch" method="get">
+				<input type="submit" class="btn btn-primary" value="往復">
+			</form>
+		</div>
+
+		<div class="d-flex justify-content-end">
+			<form action="/cancel" method="get">
+				<input type="submit" class="btn btn-primary" value="予約確認">
+			</form>
+		</div>
+		<strong th:text=${error}></strong>
+		<p></p>
+
+		<form action="/result" class="" method="post">
+			<div class="row">
+				<div class="station">
+					<div class="col-sm-12">
+						<label for="ride_station">乗車駅：</label>
+						<p>
+							<select 
+								name="rideStation"
+								class="form-select"
+								aria-label="Default select example"
+								required="required">
+								<option value="">選択してください</option>
+								<option
+									th:each="station : ${stationList}"
+									th:value="${station}"
+									th:text="${station}"></option>
+							</select>
+						</p>
+					</div>
+
+
+					<div class="col-sm-12">
+						<label for="drop_off_station">降車駅：</label>
+						<p>
+							<select
+								name="dropOffStation"
+								class="form-select"
+								required="required">
+								<option value="">選択してください</option>
+								<option
+									th:each="station : ${stationList}"
+									th:value="${station}"
+									th:text="${station}"></option>
+							</select>
+						</p>
+					</div>
+				</div>
+
+
+
+				<div class="time">
+					<label for="time"></label>
+					<div class="col-sm-12">
+						<p>
+							予定の日付： 
+							<input
+								type="date"
+								id="today"
+								name="date"
+								required="required">
+						</p>
+					</div>
+					<div class="col-sm-12">
+						<p>
+							予定の時刻： 
+							<input
+								type="time"
+								id="currentTime"
+								name="time"
+								required="required">
+						</p>
+					</div>
+					<script type="text/javascript">
+						//今日の日時を表示
+						var date = new Date();
+
+						var yyyy = date.getFullYear();
+						var mm = ("0" + (date.getMonth() + 1)).slice(-2);
+						var dd = ("0" + date.getDate()).slice(-2);
+
+						document.getElementById("today").value = yyyy + '-' + mm + '-' + dd;
+						document.getElementById("today").min = yyyy + '-' + mm + '-' + dd;
+					</script>
+					<script type="text/javascript">
+						//現在の時間を表示
+						var nowTime = new Date();
+						var nowHour = nowTime.getHours();
+						var nowMin = nowTime.getMinutes();
+
+						var msg = nowHour + ":" + nowMin;
+						document.getElementById("currentTime").value = msg;
+					</script>
+				</div>
+
+
+				<div class=text-center>
+					<input type="hidden" name="options" th:value=null>
+					<input type="submit" class="btn btn-primary btn-lg" value="検索">
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

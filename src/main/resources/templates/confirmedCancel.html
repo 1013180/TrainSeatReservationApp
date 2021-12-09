@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<title>キャンセル確認</title>
+</head>
+<body>
+	<div class="border border-primary" style="padding: 20px; margin: 30px;">
+	
+		<h2>キャンセル確認</h2>
+
+		<div class="d-flex justify-content-end">
+			<form action="/" method="get">
+				<input type="submit" class="btn btn-primary"  value="トップに戻る">
+			</form>
+		</div>
+		
+		<div class="border border-primary"
+			style="padding: 20px; margin: 30px;">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class=text-center>
+						<div th:object="${reservationForm}">
+							<p th:text="*{date}">日付</p>
+							<p th:text="*{timeStr}">時間</p>
+							<p><span th:text="*{rideStation}"></span><span>→</span><span th:text="*{dropOffStation}"></span></p>
+							-座席名-<p th:text="*{seat}">指定席</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- OKを押したら予約を削除して完了画面に遷移 -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div class=text-center>
+					<div>
+						予約をキャンセルしますか？
+						<a th:href="@{|/completedCansel/*{id}|}" class="btn btn-primary">OK</a>
+						<a href="/cancel" class="btn btn-primary">戻る</a>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

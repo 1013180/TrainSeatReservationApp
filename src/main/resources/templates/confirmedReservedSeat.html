@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<title>予約一覧</title>
+</head>
+<body>
+
+	<div class="border border-primary" style="padding: 20px; margin: 30px;">
+
+		<h2>指定席選択</h2>
+
+		<div class="d-flex justify-content-end">
+			<form action="/" method="get">
+				<input type="submit" class="btn btn-primary" value="トップに戻る">
+			</form>
+		</div>
+		<form action="/confirmedReservedSeat" method="get">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="border border-primary"
+						style="padding: 30px; margin: 10px;">
+
+						<!-- ------------------------------------テーブル１列目------------------------------------------- -->
+						<table>
+							<tr>
+								<td class="pe-4 ps-5"><input type="radio" class="btn-check"
+									name="options" id="1D" value="1D" th:text="${disabled}"> <label
+									class="btn btn-outline-primary" for="1D">1D</label></td>
+								<td class="pe-4"><input type="radio" class="btn-check"
+									name="options" id="2D" value="2D" disabled> <label
+									class="btn btn-outline-primary" for="2D">2D</label></td>
+								<td class="pe-4"><input type="radio" class="btn-check"
+									name="options" id="3D" value="3D"> <label
+									class="btn btn-outline-primary" for="3D">3D</label></td>
+								<td class="pe-4"><input type="radio" class="btn-check"
+									name="options" id="4D" value="4D"> <label
+									class="btn btn-outline-primary" for="4D">4D</label></td>
+								<td class="pe-4"><input type="radio" class="btn-check"
+									name="options" id="5D" value="5D"> <label
+									class="btn btn-outline-primary" for="5D">5D</label></td>
+								<td class="pe-4"><input type="radio" class="btn-check"
+									name="options" id="6D" value="6D"> <label
+									class="btn btn-outline-primary" for="6D">6D</label></td>
+								<td class="pe-4"><input type="radio" class="btn-check"
+									name="options" id="7D" value="7D"> <label
+									class="btn btn-outline-primary" for="7D">7D</label></td>
+								<td class="pe-4"><input type="radio" class="btn-check"
+									name="options" id="8D" value="8D"> <label
+									class="btn btn-outline-primary" for="8D">8D</label></td>
+								<td class="pe-4"><input type="radio" class="btn-check"
+									name="options" id="9D" value="9D"> <label
+									class="btn btn-outline-primary" for="9D">9D</label></td>
+								<td class="pe-4"><input type="radio" class="btn-check"
+									name="options" id="10D" value="10D"> <label
+									class="btn btn-outline-primary" for="10D">10D</label></td>
+							</tr>
+
+							<!-- ------------------------------------テーブル2列目------------------------------------------- -->
+
+							<tr>
+								<td class="ps-5"><input type="radio" class="btn-check"
+									name="options" id="1C" value="1C"> <label
+									class="btn btn-outline-primary" for="1C">1C</label></td>
+								<td class=""><input type="radio" class="btn-check"
+									name="options" id="2C" value="2C"> <label
+									class="btn btn-outline-primary" for="2C">2C</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="3C" value="3C"> <label
+									class="btn btn-outline-primary" for="3C">3C</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="4C" value="4C"> <label
+									class="btn btn-outline-primary" for="4C">4C</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="5C" value="5C"> <label
+									class="btn btn-outline-primary" for="5C">5C</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="6C" value="6C"> <label
+									class="btn btn-outline-primary" for="6C">6C</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="7C" value="7C"> <label
+									class="btn btn-outline-primary" for="7C">7C</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="8C" value="8C"> <label
+									class="btn btn-outline-primary" for="8C">8C</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="9C" value="9C"> <label
+									class="btn btn-outline-primary" for="9C">9C</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="10C" value="10C"> <label
+									class="btn btn-outline-primary" for="10C">10C</label></td>
+								<td></td>
+							</tr>
+
+							<!-- ------------------------------------テーブル3列目(スペース)------------------------------------------- -->
+							<tr>
+								<td class="p-4"></td>
+							</tr>
+							<!-- ------------------------------------テーブル4列目------------------------------------------- -->
+
+							<tr>
+								<td class="ps-5"><input type="radio" class="btn-check"
+									name="options" id="1B" value="1B"> <label
+									class="btn btn-outline-primary" for="1B">1B</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="2B" value="2B"> <label
+									class="btn btn-outline-primary" for="2B">2B</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="3B" value="3B"> <label
+									class="btn btn-outline-primary" for="3B">3B</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="4B" value="4B"> <label
+									class="btn btn-outline-primary" for="4B">4B</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="5B" value="5B"> <label
+									class="btn btn-outline-primary" for="5B">5B</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="6B" value="6B"> <label
+									class="btn btn-outline-primary" for="6B">6B</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="7B" value="7B"> <label
+									class="btn btn-outline-primary" for="7B">7B</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="8B" value="8B"> <label
+									class="btn btn-outline-primary" for="8B">8B</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="9B" value="9B"> <label
+									class="btn btn-outline-primary" for="9B">9B</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="10B" value="10B"> <label
+									class="btn btn-outline-primary" for="10B">10B</label></td>
+								<td></td>
+							</tr>
+
+							<!-- ------------------------------------テーブル5列目------------------------------------------- -->
+
+							<tr>
+								<td class="ps-5"><input type="radio" class="btn-check"
+									name="options" id="1A" value="1A"> <label
+									class="btn btn-outline-primary" for="1A" >1A</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="2A" value="2A"> <label
+									class="btn btn-outline-primary" for="2A">2A</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="3A" value="3A"> <label
+									class="btn btn-outline-primary" for="3A">3A</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="4A" value="4A"> <label
+									class="btn btn-outline-primary" for="4A">4A</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="5A" value="5A"> <label
+									class="btn btn-outline-primary" for="5A">5A</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="6A" value="6A"> <label
+									class="btn btn-outline-primary" for="6A">6A</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="7A" value="7A"> <label
+									class="btn btn-outline-primary" for="7A">7A</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="8A" value="8A"> <label
+									class="btn btn-outline-primary" for="8A">8A</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="9A" value="9A"> <label
+									class="btn btn-outline-primary" for="9A">9A</label></td>
+								<td><input type="radio" class="btn-check" name="options"
+									id="10A" value="10A"> <label
+									class="btn btn-outline-primary" for="10A">10A</label></td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<input type="hidden" name="root" th:value="${root}">
+			<div class="d-flex">
+				<input type="submit" class="btn btn-primary" value="決定"> 
+			</div>
+		</form>
+		<form action="/" method="get">
+			<input type="submit" class="btn btn-primary" th:value="トップに戻る">
+		</form>
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

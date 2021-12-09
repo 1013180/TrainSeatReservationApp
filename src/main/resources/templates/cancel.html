@@ -1,0 +1,68 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<title>予約一覧</title>
+</head>
+<body>
+
+	<div class="border border-primary" style="padding: 20px; margin: 30px;">
+
+
+		<h2>予約一覧</h2>
+
+		<div class="d-flex justify-content-end">
+			<form action="/" method="get">
+				<input type="submit" class="btn btn-primary" value="トップに戻る">
+			</form>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<table>
+					<tr>
+						<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						<th>年 - 月 - 日</th>
+						<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						<th>時</th>
+						<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						<th>乗車駅 → 降車駅</th>
+						<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						<th>指定席</th>
+					</tr>
+				</table>
+
+				<div class="border border-primary"
+					style="padding: 30px; margin: 10px;">
+					<table>
+						<tr th:each="reservation : ${reservationList}"
+							th:object="${reservation}">
+							<td th:text="*{date}">日付</td>
+							<td>&nbsp;&nbsp;</td>
+							<td th:text="*{timeStr}">時間</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td th:text="*{rideStation}">乗車駅</td>
+							<td>&nbsp;</td>
+							<td>→</td>
+							<td>&nbsp;</td>
+							<td th:text="*{dropOffStation}">降車駅</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td th:text="*{seat}">指定席</td>
+							<td>&nbsp;&nbsp;</td>
+							<td><a class="btn btn-primary" th:href="@{|/confirmedCancel/*{id}|}">キャンセル</a></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

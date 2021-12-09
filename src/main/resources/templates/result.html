@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<title>経路検索結果【片道】</title>
+</head>
+
+<body>
+
+	<div class="border border-primary" style="padding: 20px; margin: 30px;">
+
+		
+
+		<div class="d-flex justify-content-between">
+		<h2>経路検索結果【片道】</h2>
+			<form action="/" method="get">
+				<input type="submit" class="btn btn-primary" value="トップに戻る">
+			</form>
+		</div>
+		<br>
+		<br>
+		<form action="/confirmation" method="post">
+			<div class="row">
+				<div class="col">
+					<div>
+						<span th:text="${time}"></span> 出発
+					</div>
+					<div>
+						<span th:text="${rideStation}"></span> → <span
+							th:text="${dropOffStation}"></span>
+					</div>
+				</div>
+				<div class="col">
+					<th:block th:each="date : ${searchedList}">
+						<span th:text="*{date}"></span>
+						<input type="radio" name="date" class="form-check-input"
+							th:value="*{date}">
+						<br>
+					</th:block>
+				</div>
+				
+				<div class="col">
+				[座席名]<br>
+				<p th:text="${seat}"></p>
+				</div>
+				<div class="col">
+					<a href="reservedSeat?root=oneWay" class="btn btn-primary">座席を指定する</a>
+				</div>
+			</div>
+			<br> 
+			<br>
+			<!-- 予約ボタン -->
+			<div class="d-flex justify-content-end">
+				<input type="submit" class="btn btn-primary btn-sm" value="予約する">
+			</div>
+		</form>
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<title>経路検索結果【往復】</title>
+</head>
+
+<body>
+
+	<div class="border border-primary" style="padding: 20px; margin: 30px;">
+
+		<h2>経路検索結果【往復】</h2>
+
+		<!-- トップに戻るボタン -->
+		<div class="d-flex justify-content-end">
+			<form action="/" method="get">
+				<input type="submit" class="btn btn-primary" value="トップに戻る">
+			</form>
+		</div>
+
+		<!-- 往路 -->
+		<div>
+			<h6>往路</h6>
+		</div>
+		<form action="/roundTripConfirmation" method="post">
+			<div class="row">
+				<div class="col">
+					<div>
+						<span th:text="${time}"></span>出発
+					</div>
+					<div>
+						<span th:text="${rideStation}"></span>
+						 → 
+						 <span th:text="${dropOffStation}"></span>
+					</div>
+				</div>
+				<div class="col">
+					<th:block th:each="date : ${searchedList}">
+						<span th:text="*{date}"></span>
+						
+						<input type="radio" name="date" class="form-check-input"
+							 th:value="*{date}">
+						<br>
+					</th:block>
+				</div>
+				<div class="col">
+				[座席名]<br>
+				<p th:text="${outwardTripSeat}"></p>
+				</div>
+				<div class="col-sm-4">
+					<a href="reservedSeat?root=outwardTrip" class="btn btn-primary">座席を指定する</a>
+				</div>
+			</div>
+
+			<br>
+
+			<!-- 復路 -->
+			<div>
+				<h6>復路</h6>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div>
+						<span th:text="${returnTripTime}"></span>出発
+					</div>
+					<div>
+						<span th:text="${returnTripRideStation}"></span> → <span
+							th:text="${returnTripDropOffStation}"></span>
+					</div>
+				</div>
+				<div class="col">
+
+					<th:block th:each="date : ${returnTripSearchedList}">
+						<span th:text="*{date}"></span>
+						
+						<input type="radio" name="returnTripDate" class="form-check-input"
+							 th:value="*{date}">
+						<br>
+					</th:block>
+				</div>
+				<div class="col">
+				[座席名]<br>
+				<p th:text="${returnTripSeat}"></p>
+				</div>
+				<div class="col-sm-4">
+					<a href="reservedSeat?root=returnTrip" class="btn btn-primary">座席を指定する</a>
+				</div>
+			</div>
+		<div class="d-flex justify-content-end">
+			<input type="submit" class="btn btn-primary btn-lg" value="予約">
+		</div>
+		</form>
+		
+
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

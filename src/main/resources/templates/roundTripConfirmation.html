@@ -1,0 +1,91 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<title>経路の確認</title>
+</head>
+<body>
+
+	<div class="border border-primary" style="padding: 20px; margin: 30px;">
+
+		<h2>経路の確認</h2>
+
+		<div class="d-flex justify-content-end">
+			<form action="/" method="get">
+				<input type="submit" class="btn btn-primary" value="トップに戻る">
+			</form>
+		</div>
+
+		<div class="border border-primary"
+			style="padding: 20px; margin: 30px;">
+			<div class="container-fluid">
+				<div class="row">
+					<!-- 往路 -->
+					<div class="col-6">
+					<div class="text-center">
+					    <p>【往路】</p>
+						<p>
+							<span th:text="${date}"></span>
+						</p>
+						<p>
+							<span th:text="${time}"></span>
+						</p>
+						<p>
+							<span th:text="${rideStation}"></span> → <span
+								th:text="${dropOffStation}"></span>
+						</p>
+						<p></p>
+						<p>
+							-座席名-<br>
+							<span th:text="${seat}">座席指定</span>
+						</p>
+					</div>
+					</div>
+					<!-- 復路 -->
+					<div class="col-6">
+					<div class="text-center">
+						<p>【復路】</p>
+						<p>
+							<span th:text="${returnTripDate}"></span>
+						</p>
+						<p>
+							<span th:text="${returnTripTime}"></span>
+						</p>
+						<p>
+							<span th:text="${returnTripRideStation}"></span> → <span
+								th:text="${returnTripDropOffStation}"></span>
+						</p>
+						<p></p>
+						<p>
+							-座席名-<br>
+							<span th:text="${returnSeat}">座席指定</span>
+						</p>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	<div class=text-center>
+			<div style="display: inline-flex">
+				予約を確定しますか？
+				<form action="/reserveRoundTrip" method="post">
+					<input type="submit" class="btn btn-primary btn-lg" style="margin: 4px" value="OK">
+				</form>
+				<form action="/" method="get">
+					<input type="submit" class="btn btn-primary btn-lg" style="margin: 4px" value="戻る">
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+		<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
